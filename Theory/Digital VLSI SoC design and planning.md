@@ -140,6 +140,10 @@ Provides standard cell libraries, design rules, and models.
       
 ## OpenLane:
 [OpenLane](https://openlane.readthedocs.io/en/latest/) is an open-source framework for digital ASIC design, enabling the transformation of high-level RTL (Register Transfer Level) designs into GDSII layouts ready for fabrication. Developed as part of the OpenROAD project, it provides an automated RTL-to-GDSII flow that integrates various open-source EDA tools.
+  <div align="center">
+  <img src="https://github.com/user-attachments/assets/b7e9e0e1-e5d6-4d40-b3d5-48dc2c583de2" alt="Description of Image" width="600" height="300">
+  </div>
+
 
 <details> <summary> OpenLane Workflow: </summary> 
   
@@ -185,6 +189,106 @@ The OpenLane workflow consists of the following steps:
 - Tool: Magic.
 - Output: GDSII file.
 </details>
+
+
+# Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
+
+## Floorplanning consideration
+
+Gates---->Physical dimentions 
+![image](https://github.com/user-attachments/assets/084907a0-624e-4d97-933e-1969aa90bec2)
+
+Die and core area
+![image](https://github.com/user-attachments/assets/b08cbcf4-9d90-4cec-8819-3671eef91e6d)
+
+      -Utilization Factor = (Area occupied by netlist/Total area of the core)
+
+      -Aspect Ratio = (Height/Width)
+
+Aspect ratio: It is calculated by the height and core,Aspect ratio for rectangular core is 0.5 and square core is 1.
+
+## Preplaced cells:
+
+Spliting the combinational logic into two parts
+![image](https://github.com/user-attachments/assets/38a9ebdd-53b8-4481-9388-67040eca9c39)
+
+Creating a block box called IP
+![image](https://github.com/user-attachments/assets/5ae6a3f0-ade7-413b-9310-edb0e8e92f16)
+
+- The arrangement of these IP's in a chip is referred as Floorplanning 
+- These IP's/blocks have user-defined locations, and hence are placed in chip before automated placement-and-routing and are called as pre-placed cells. 
+- Automated placement and routing tools places the remaining logical cells in the design onto chip
+
+Examples for IP
+![image](https://github.com/user-attachments/assets/6cd7313d-071c-4244-a747-187c1e23f768)
+
+Preplaced cells in core
+![image](https://github.com/user-attachments/assets/d81f123b-2c86-4bdd-ba30-1817d98ce3ac)
+
+- Decoupling Capacitor:
+     - Physical wire connection have a resistance in nature
+     - Switching wants to be n proper one volt for switching from 0 to 1
+     - If the vdd goes below the noise margin the switching will not happen
+![Screenshot (588)](https://github.com/user-attachments/assets/60447cd2-1b0d-4c9e-9cff-904e89ce9127)
+
+- Noise margin:
+     - The minimum acceptable voltage level for a logic gate input signal to be recognized as a logical “0” (LOW)
+     - The maximum acceptable voltage level for it to be recognized as a logical “1” (HIGH)
+![Screenshot (590)](https://github.com/user-attachments/assets/86a2d7c9-bc4c-45fb-8764-e761e81078b1)
+
+     - placing a capacitor infront of the circuit is decoupling
+    - It decoples the circuit form main power supply
+  ![image](https://github.com/user-attachments/assets/08fa2e56-f97b-4ed6-9341-2fbba19e0f42)
+
+  ## Power Planning
+- Eventhough we are using decap the single power supply cannot able to give proper power to circuit
+![image](https://github.com/user-attachments/assets/c7f3f3ed-df26-4881-88ae-f777f7f5daea)
+
+- To overcome this problem we are using power mesh as shown in below img
+![image](https://github.com/user-attachments/assets/e970823f-9340-4721-89fb-8d5df5172d54)
+
+- Power mesh in core
+![Screenshot (592)](https://github.com/user-attachments/assets/47fb1d30-4cf3-49e9-a4e2-7c163474659d)
+
+## Pin placement
+
+- Combinational Circuit
+![Screenshot (594)](https://github.com/user-attachments/assets/5494705b-9fed-4997-9895-03b9a80622a6)
+
+- Placing pins
+   - We can place Din,Dout where ever we want,Placing near to our block is preferrable
+   - CLk pin should be bit thicker since it has driven for all flops.
+  ![Screenshot (595)](https://github.com/user-attachments/assets/8114ed7e-8190-4c08-95a3-34f54a899345)
+
+## Placement
+
+ - Binding netlist with physical cells
+ ![Screenshot (596)](https://github.com/user-attachments/assets/3782d3a5-ed80-4adf-94ec-7a56b1fdd09a)
+ ![Screenshot (597)](https://github.com/user-attachments/assets/e2599864-0b71-461b-926c-43c5b5dcc1df)
+
+- Library
+    - It is just like our real library
+    - It consists all details of circuits for example delay,length,width
+      
+  ![image](https://github.com/user-attachments/assets/3466261c-269c-4b97-ae51-07be487ad862)
+
+-Optimize placement using estimated wire-length and capacitance
+![image](https://github.com/user-attachments/assets/77af2d74-5bcf-4f0d-8546-3596d4c20632)
+![Screenshot (600)](https://github.com/user-attachments/assets/32708099-2ef5-4e7f-9b08-2aba63b87173)
+
+- Buffer/Repeaters:
+   - It is used to transmit a signal from one place to another,when the circuit block is far from each other
+     ![Screenshot (601)](https://github.com/user-attachments/assets/c96edd24-fde3-4999-80fb-7db2b1b0d2fd)
+     ![Screenshot (602)](https://github.com/user-attachments/assets/3bc3e874-93c5-46b6-9e24-f4296b0d891c)
+
+   - You may see the cirs cross line in placement it is fine, we will place this in seperare layer(Metal-1,2,3)
+     ![Screenshot (604)](https://github.com/user-attachments/assets/36f9cd6c-2a8d-4d40-a242-29da179f6348)
+
+  
+
+
+
+
 
 
 
