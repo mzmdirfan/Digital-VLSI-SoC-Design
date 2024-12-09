@@ -322,7 +322,69 @@ Preplaced cells in core
   ![image](https://github.com/user-attachments/assets/b115523a-a9b3-4ec4-a36c-12cca86964bf)
   ![image](https://github.com/user-attachments/assets/f31a744d-4347-4532-a327-94e242c01b28)
 
- 
+- Design Flow -->
+    - Circuit design
+    - Layout design
+    - Characterization
+      
+ - Circuit design:
+    - Implement the function
+    - Model the pmos and nmos
+    - W,L Drain current needs to be library standard
+   ![image](https://github.com/user-attachments/assets/3459e422-9d9e-4551-81d7-a97b2c55b588)
+
+ - Layout design:
+     - Euler's Path
+   ![image](https://github.com/user-attachments/assets/e7d89856-3f73-4488-962f-5bf247d399bb)
+     - Stick diagram 
+   ![image](https://github.com/user-attachments/assets/7f3b6c1c-4619-4fc1-8302-1d2b880b86fa)
+     - Layout
+   ![image](https://github.com/user-attachments/assets/1e9e04ad-c684-452d-9e8c-4dc035d23df4)
+
+  - Characterization:
+      - Circuit
+    ![image](https://github.com/user-attachments/assets/e7021019-7e49-485f-b07f-b988d42ad5e0)
+
+      - Circuit netlist ---> .subckt ---> .model
+          - Circuit netlist is consist of description of circuit with inveter,VDD,VSS,Pulse etc...
+          - .subckt which describes the inverter
+          - .model which describes the nmos,pmos 
+      ![Screenshot (621)](https://github.com/user-attachments/assets/86f970f0-29cd-4101-81d8-b3b4d84fb19c)
+      
+# SKY130_D2_SK4 - General timing characterization parameters
+
+## Timing Thershold definition
+### Transition time
+ It is calcuated from output of buffer vs input to inverter two
+![image](https://github.com/user-attachments/assets/05674382-11d8-4048-ade1-21274c28e247)
+- slew_low_rise_thr -20% of input
+  ![Screenshot (639)](https://github.com/user-attachments/assets/1908a149-449e-49d9-ab5d-3143d036f651)
+- slew_high_rise_thr -80% of Input
+ ![Screenshot (640)](https://github.com/user-attachments/assets/3a5cb048-6471-4071-8a9c-1bdaa8d1ad6e)
+- slew_low_fall_thr  -20% buf output
+![Screenshot (641)](https://github.com/user-attachments/assets/646d4d68-327b-479b-93a0-09d00609cec5)
+- slew_low_fall_thr -80% buf output
+![Screenshot (642)](https://github.com/user-attachments/assets/78826d09-96ee-4d15-80ed-cd55a6bf42d3)
+
+### Propagation delay
+      Propagation delay= time(out_*_thr) - time(in_*_thr)
+  - We have to take of 50% of rise and fall
+
+    In_rise_thr
+    ![Screenshot (644)](https://github.com/user-attachments/assets/4cc3566b-2698-4d63-a1a3-49329f568f0c)
+    In_fall_thr
+    ![Screenshot (645)](https://github.com/user-attachments/assets/69979edd-8666-4ae5-9b6f-82e7ac77658c)
+    out_rise_thr
+    ![Screenshot (646)](https://github.com/user-attachments/assets/69f72eb3-ea89-486d-a9bd-c7936ffc2a12)
+    out_fall_thr
+    ![Screenshot (647)](https://github.com/user-attachments/assets/67ddf168-1b8c-49b4-b949-f011bba3a4f8)
+
+
+
+
+
+
+
 
 
 
