@@ -284,9 +284,50 @@ Preplaced cells in core
    - You may see the cirs cross line in placement it is fine, we will place this in seperare layer(Metal-1,2,3)
      ![Screenshot (604)](https://github.com/user-attachments/assets/36f9cd6c-2a8d-4d40-a242-29da179f6348)
 
-  
+## SKY130_D2_SK3 - Cell design and characterization flows
+- Let's reverse engineering the standard cell
+  ![image](https://github.com/user-attachments/assets/d6a5b4c0-40c3-4d64-9772-563ab3a90588)
+
+- Standard consist of a library which has and,or,not etc...
+- These Cells are come in diffrents sizes,Vt
+  ![image](https://github.com/user-attachments/assets/910296fe-9faa-4df1-92f9-8017a8ff6df4)
+
+- Lets break down the Inverter
+    - Input
+    - Design Flow
+    - Output
+- Input -->
+     - Process design kits PDK's:
+          - DRC & LVS rules,
+          - SPICE models,
+          - library and user defined-specs
+  ![image](https://github.com/user-attachments/assets/a8671004-0dfa-455c-8c32-d60bec85ad65)
+
+  - DRC & LVS rules:
+      - Tech files has set of rules which explanis length and width of library.
+      - It si provided by the foundry. 
+  ![image](https://github.com/user-attachments/assets/bfb19be1-b246-41fe-91c4-72ff6199750c)
+      - Examples of DRC rules:
+  ![Screenshot (610)](https://github.com/user-attachments/assets/ac70cac2-90b7-4a65-a5fa-3d6fb34f3b8f)
+
+  - SPICE models:
+      - It should be provided by foundry 
+    ![image](https://github.com/user-attachments/assets/dd4ed7d6-1d30-455f-8d74-53aa0c6341dd)
+    ![Screenshot (612)](https://github.com/user-attachments/assets/adba3918-62b1-4d0f-a2f3-ebef760a4f42)
+
+  - library and user defined-specs:
+      - It defines cell height, supply voltage, metal layers, pin location,
+  ![image](https://github.com/user-attachments/assets/7b0b5fd3-d084-4d48-9f2a-21ab16d5bcbc)
+  ![image](https://github.com/user-attachments/assets/c84d58ef-c317-403b-aa93-36cf04478879)
+  ![image](https://github.com/user-attachments/assets/b115523a-a9b3-4ec4-a36c-12cca86964bf)
+  ![image](https://github.com/user-attachments/assets/f31a744d-4347-4532-a327-94e242c01b28)
+
+ 
 
 
+
+
+ 
 
 
 
