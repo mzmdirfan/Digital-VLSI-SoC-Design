@@ -191,8 +191,9 @@ The OpenLane workflow consists of the following steps:
 </details>
 
 
-# Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
-
+## Sky130 Day 2 - Good floorplan vs bad floorplan and introduction to library cells
+<details> <summary> Floorplanning consideration </summary>
+  
 ## Floorplanning consideration
 
 Gates---->Physical dimentions 
@@ -206,7 +207,10 @@ Die and core area
       -Aspect Ratio = (Height/Width)
 
 Aspect ratio: It is calculated by the height and core,Aspect ratio for rectangular core is 0.5 and square core is 1.
+</details>
 
+<details> <summary> Preplaced cells </summary>
+  
 ## Preplaced cells:
 
 Spliting the combinational logic into two parts
@@ -239,7 +243,10 @@ Preplaced cells in core
      - placing a capacitor infront of the circuit is decoupling
     - It decoples the circuit form main power supply
   ![image](https://github.com/user-attachments/assets/08fa2e56-f97b-4ed6-9341-2fbba19e0f42)
+</details>
 
+<details> <summary> Power Planning </summary>
+  
   ## Power Planning
 - Eventhough we are using decap the single power supply cannot able to give proper power to circuit
 ![image](https://github.com/user-attachments/assets/c7f3f3ed-df26-4881-88ae-f777f7f5daea)
@@ -249,7 +256,10 @@ Preplaced cells in core
 
 - Power mesh in core
 ![Screenshot (592)](https://github.com/user-attachments/assets/47fb1d30-4cf3-49e9-a4e2-7c163474659d)
+</details>
 
+<details> <summary> Pin Placement </summary>
+  
 ## Pin placement
 
 - Combinational Circuit
@@ -283,6 +293,7 @@ Preplaced cells in core
 
    - You may see the cirs cross line in placement it is fine, we will place this in seperare layer(Metal-1,2,3)
      ![Screenshot (604)](https://github.com/user-attachments/assets/36f9cd6c-2a8d-4d40-a242-29da179f6348)
+</details>
 
 ## SKY130_D2_SK3 - Cell design and characterization flows
 - Let's reverse engineering the standard cell
@@ -296,6 +307,9 @@ Preplaced cells in core
     - Input
     - Design Flow
     - Output
+  
+<details> <summary> Input </summary>
+  
 - Input -->
      - Process design kits PDK's:
           - DRC & LVS rules,
@@ -322,6 +336,10 @@ Preplaced cells in core
   ![image](https://github.com/user-attachments/assets/b115523a-a9b3-4ec4-a36c-12cca86964bf)
   ![image](https://github.com/user-attachments/assets/f31a744d-4347-4532-a327-94e242c01b28)
 
+</details>
+
+<details> <summary> Design Flow </summary>
+  
 - Design Flow -->
     - Circuit design
     - Layout design
@@ -350,6 +368,7 @@ Preplaced cells in core
           - .subckt which describes the inverter
           - .model which describes the nmos,pmos 
       ![Screenshot (621)](https://github.com/user-attachments/assets/86f970f0-29cd-4101-81d8-b3b4d84fb19c)
+      </details>
       
 # SKY130_D2_SK4 - General timing characterization parameters
 
